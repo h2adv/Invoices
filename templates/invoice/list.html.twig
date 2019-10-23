@@ -1,0 +1,25 @@
+{# templates/blog/index.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Invoices list{% endblock %}
+{% block h1 %}Invoices list{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row list-invoices">
+            <div class="col-md-2 list-head">id</div>
+            <div class="col-md-2 list-head">invoice_number</div>
+            <div class="col-md-4 list-head">invoice_date</div>
+            <div class="col-md-2 list-head">customer_id</div>
+            <div class="col-md-2 list-head"></div>
+        {% for item in invoices %}
+            <div class="col-md-2">{{ item.id }}</div>
+            <div class="col-md-2">{{ item.invoice_number }}</div>
+            <div class="col-md-4">{{ item.invoice_date|date('Y-m-d | h:m:s') }}</div>
+            <div class="col-md-2">{{ item.customer_id }}</div>
+            <div class="col-md-2"><a href="{{  path('add_details', {'id': item.id})}}">edit details</a></div>
+
+        {% endfor %}
+        </div>
+    </div>
+{% endblock %}

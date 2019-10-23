@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Invoices{% endblock %}</title>
+        {% block stylesheets %}
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+            <style>
+                .list-invoices div {
+                    padding: 8px;
+                }
+                .list-invoices .list-head {
+                    background-color: #e1e1e1;
+                }
+                header ul {
+                    padding: 12px 0 0;
+                }
+                header ul li {
+                    color: #fff;
+                }
+                .alert.alert-success {
+                    margin: 32px 0;
+                }
+            </style>
+        {% endblock %}
+    </head>
+    <body>
+        <header>
+            <div class="bg-dark">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12">
+                            <ul>
+                                <li class="d-inline"><a class="text-white" href="{{  path('index') }}">Invoice list</a> | </li>
+                                <li class="d-inline"><a class="text-white" href="{{  path('add') }}">Add new invoice</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="container" style="padding-top: 16px;">
+            <h1 style="padding: 13px 0;">{% block h1 %}{% endblock %}</h1>
+            {% block body %}{% endblock %}
+            {% for message in app.flashes('success') %}
+                <div class="alert alert-success">
+                    {{ message }}
+                </div>
+            {% endfor %}
+            {% block javascripts %}
+                <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+            {% endblock %}
+        </div>
+    </body>
+</html>

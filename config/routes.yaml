@@ -1,0 +1,21 @@
+# This file is the entry point to configure your own HTTP routes.
+# Files in the routes/ subdirectory configure the routes for your dependencies.
+
+index:
+    path: /invoice
+    defaults: { _controller: 'App\Controller\InvoiceController::index' }
+
+add:
+    path: /invoice/add
+    defaults: { _controller: 'App\Controller\InvoiceController::add' }
+
+add_details:
+    path: /invoice/add/{id}
+    defaults: { _controller: 'App\Controller\InvoiceController::addDetails' }
+
+root:
+    path: /
+    defaults:
+        _controller: FrameworkBundle:Redirect:urlRedirect
+        path: /invoice
+        permanent: true
